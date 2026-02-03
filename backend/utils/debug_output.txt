@@ -1,0 +1,554 @@
+{
+  "cinemas": [
+    {
+      "cinema_id": 10636,
+      "cinema_name": "Cinema 6",
+      "address": "Jetty",
+      "address2": "address2",
+      "city": "city",
+      "state": "State",
+      "county": "county",
+      "postcode": "Zip",
+      "lat": -22.680721,
+      "lng": 14.519094,
+      "distance": 57.55892076987,
+      "logo_url": "https://assets.movieglu.com/chain_logos/xx/UK-0-sq.jpg"
+    }
+  ],
+  "status": {
+    "count": 1,
+    "state": "OK",
+    "method": "cinemasNearby",
+    "message": null,
+    "request_method": "GET",
+    "version": "MOVI_286_XXv200",
+    "territory": "XX",
+    "device_datetime_sent": "2026-02-02T17:10:40.333Z",
+    "device_datetime_used": "2026-02-02 17:10:40"
+  }
+}
+
+CINEMA SHOWTIMES:
+{
+  "cinema": {
+    "cinema_id": 10636,
+    "cinema_name": "Cinema 6"
+  },
+  "films": [
+    {
+      "film_id": 7772,
+      "imdb_id": 82971,
+      "imdb_title_id": "tt0082971",
+      "film_name": "Raiders of the Lost Ark",
+      "other_titles": null,
+      "version_type": "Standard",
+      "age_rating": [
+        {
+          "rating": "PG ",
+          "age_rating_image": "https://assets.movieglu.com/age_rating_logos/xx/pg.png",
+          "age_advisory": "Contains moderate violence and mild language"
+        }
+      ],
+      "images": {
+        "poster": {
+          "1": {
+            "image_orientation": "portrait",
+            "region": "UK",
+            "medium": {
+              "film_image": "https://image.movieglu.com/7772/GBR_007772h0.jpg",
+              "width": 200,
+              "height": 300
+            }
+          }
+        },
+        "still": {
+          "1": {
+            "image_orientation": "landscape",
+            "medium": {
+              "film_image": "https://image.movieglu.com/7772/007772h2.jpg",
+              "width": 300,
+              "height": 200
+            }
+          }
+        }
+      },
+      "showings": {
+        "Standard": {
+          "film_id": 7772,
+          "film_name": "Raiders of the Lost Ark",
+          "times": [
+            {
+              "start_time": "17:40",
+              "end_time": "19:54"
+            },
+            {
+              "start_time": "17:50",
+              "end_time": "20:04"
+            },
+            {
+              "start_time": "18:20",
+              "end_time": "20:34"
+            },
+            {
+              "start_time": "18:45",
+              "end_time": "20:59"
+            },
+            {
+              "start_time": "19:10",
+              "end_time": "21:24"
+            },
+            {
+              "start_time": "19:45",
+              "end_time": "21:59"
+            },
+            {
+              "start_time": "19:50",
+              "end_time": "22:04"
+            },
+            {
+              "start_time": "20:30",
+              "end_time": "22:44"
+            },
+            {
+              "start_time": "21:10",
+              "end_time": "23:24"
+            },
+            {
+              "start_time": "22:00",
+              "end_time": "00:14"
+            },
+            {
+              "start_time": "22:50",
+              "end_time": "01:04"
+            }
+          ]
+        }
+      },
+      "show_dates": [
+        {
+          "date": "2026-02-02"
+        },
+        {
+          "date": "2026-02-03"
+        },
+        {
+          "date": "2026-02-04"
+        },
+        {
+          "date": "2026-02-05"
+        },
+        {
+          "date": "2026-02-06"
+        },
+        {
+          "date": "2026-02-07"
+        },
+        {
+          "date": "2026-02-08"
+        }
+      ]
+    },
+    {
+      "film_id": 184126,
+      "imdb_id": 3659388,
+      "imdb_title_id": "tt3659388",
+      "film_name": "The Martian",
+      "other_titles": null,
+      "version_type": "Standard",
+      "age_rating": [
+        {
+          "rating": "12A ",
+          "age_rating_image": "https://assets.movieglu.com/age_rating_logos/xx/12a.png",
+          "age_advisory": "infrequent strong language, injury detail"
+        }
+      ],
+      "images": {
+        "poster": {
+          "1": {
+            "image_orientation": "portrait",
+            "region": "UK",
+            "medium": {
+              "film_image": "https://image.movieglu.com/184126/GBR_184126h0.jpg",
+              "width": 200,
+              "height": 300
+            }
+          }
+        },
+        "still": {
+          "1": {
+            "image_orientation": "landscape",
+            "medium": {
+              "film_image": "https://image.movieglu.com/184126/184126h2.jpg",
+              "width": 300,
+              "height": 200
+            }
+          }
+        }
+      },
+      "showings": {
+        "Standard": {
+          "film_id": 184126,
+          "film_name": "The Martian",
+          "times": [
+            {
+              "start_time": "17:40",
+              "end_time": "19:46"
+            },
+            {
+              "start_time": "18:30",
+              "end_time": "20:36"
+            },
+            {
+              "start_time": "20:10",
+              "end_time": "22:16"
+            }
+          ]
+        }
+      },
+      "show_dates": [
+        {
+          "date": "2026-02-02"
+        },
+        {
+          "date": "2026-02-03"
+        },
+        {
+          "date": "2026-02-04"
+        },
+        {
+          "date": "2026-02-05"
+        },
+        {
+          "date": "2026-02-06"
+        },
+        {
+          "date": "2026-02-07"
+        },
+        {
+          "date": "2026-02-08"
+        }
+      ]
+    },
+    {
+      "film_id": 59906,
+      "imdb_id": 469494,
+      "imdb_title_id": "tt0469494",
+      "film_name": "There Will Be Blood",
+      "other_titles": null,
+      "version_type": "Standard",
+      "age_rating": [
+        {
+          "rating": "15 ",
+          "age_rating_image": "https://assets.movieglu.com/age_rating_logos/xx/15.png",
+          "age_advisory": "Contains strong violence"
+        }
+      ],
+      "images": {
+        "poster": {
+          "1": {
+            "image_orientation": "portrait",
+            "region": "global",
+            "medium": {
+              "film_image": "https://image.movieglu.com/59906/059906h1.jpg",
+              "width": 200,
+              "height": 300
+            }
+          }
+        },
+        "still": {
+          "1": {
+            "image_orientation": "landscape",
+            "medium": {
+              "film_image": "https://image.movieglu.com/59906/059906h2.jpg",
+              "width": 300,
+              "height": 200
+            }
+          }
+        }
+      },
+      "showings": {
+        "Standard": {
+          "film_id": 59906,
+          "film_name": "There Will Be Blood",
+          "times": [
+            {
+              "start_time": "18:00",
+              "end_time": "20:28"
+            },
+            {
+              "start_time": "19:40",
+              "end_time": "22:08"
+            },
+            {
+              "start_time": "21:00",
+              "end_time": "23:28"
+            },
+            {
+              "start_time": "22:40",
+              "end_time": "01:08"
+            }
+          ]
+        }
+      },
+      "show_dates": [
+        {
+          "date": "2026-02-02"
+        },
+        {
+          "date": "2026-02-03"
+        },
+        {
+          "date": "2026-02-04"
+        },
+        {
+          "date": "2026-02-05"
+        },
+        {
+          "date": "2026-02-06"
+        },
+        {
+          "date": "2026-02-07"
+        },
+        {
+          "date": "2026-02-08"
+        }
+      ]
+    },
+    {
+      "film_id": 3427,
+      "imdb_id": 116367,
+      "imdb_title_id": "tt0116367",
+      "film_name": "From Dusk Till Dawn",
+      "other_titles": null,
+      "version_type": "Standard",
+      "age_rating": [
+        {
+          "rating": "18 ",
+          "age_rating_image": "https://assets.movieglu.com/age_rating_logos/xx/18.png",
+          "age_advisory": ""
+        }
+      ],
+      "images": {
+        "poster": {
+          "1": {
+            "image_orientation": "portrait",
+            "region": "UK",
+            "medium": {
+              "film_image": "https://image.movieglu.com/3427/GBR_003427h0.jpg",
+              "width": 200,
+              "height": 300
+            }
+          }
+        },
+        "still": {
+          "1": {
+            "image_orientation": "landscape",
+            "medium": {
+              "film_image": "https://image.movieglu.com/3427/003427h2.jpg",
+              "width": 300,
+              "height": 200
+            }
+          }
+        }
+      },
+      "showings": {
+        "Standard": {
+          "film_id": 3427,
+          "film_name": "From Dusk Till Dawn",
+          "times": [
+            {
+              "start_time": "17:40",
+              "end_time": "20:04"
+            },
+            {
+              "start_time": "19:00",
+              "end_time": "21:24"
+            },
+            {
+              "start_time": "20:30",
+              "end_time": "22:54"
+            },
+            {
+              "start_time": "22:00",
+              "end_time": "00:24"
+            }
+          ]
+        }
+      },
+      "show_dates": [
+        {
+          "date": "2026-02-02"
+        },
+        {
+          "date": "2026-02-03"
+        },
+        {
+          "date": "2026-02-04"
+        },
+        {
+          "date": "2026-02-05"
+        },
+        {
+          "date": "2026-02-06"
+        },
+        {
+          "date": "2026-02-07"
+        },
+        {
+          "date": "2026-02-08"
+        }
+      ]
+    },
+    {
+      "film_id": 1685,
+      "imdb_id": 109045,
+      "imdb_title_id": "tt0109045",
+      "film_name": "The Adventures of Priscilla, Queen of the Desert",
+      "other_titles": null,
+      "version_type": "Standard",
+      "age_rating": [
+        {
+          "rating": "15 ",
+          "age_rating_image": "https://assets.movieglu.com/age_rating_logos/xx/15.png",
+          "age_advisory": "Contains strong language, sex references and threat"
+        }
+      ],
+      "images": {
+        "poster": {
+          "1": {
+            "image_orientation": "portrait",
+            "region": "UK",
+            "medium": {
+              "film_image": "https://image.movieglu.com/1685/GBR_001685h0.jpg",
+              "width": 200,
+              "height": 300
+            }
+          }
+        },
+        "still": {
+          "1": {
+            "image_orientation": "landscape",
+            "medium": {
+              "film_image": "https://image.movieglu.com/1685/001685h2.jpg",
+              "width": 300,
+              "height": 197
+            }
+          }
+        }
+      },
+      "showings": {
+        "Standard": {
+          "film_id": 1685,
+          "film_name": "The Adventures of Priscilla, Queen of the Desert",
+          "times": [
+            {
+              "start_time": "19:00",
+              "end_time": "21:00"
+            },
+            {
+              "start_time": "21:20",
+              "end_time": "23:20"
+            }
+          ]
+        }
+      },
+      "show_dates": [
+        {
+          "date": "2026-02-02"
+        },
+        {
+          "date": "2026-02-03"
+        },
+        {
+          "date": "2026-02-04"
+        },
+        {
+          "date": "2026-02-05"
+        },
+        {
+          "date": "2026-02-06"
+        },
+        {
+          "date": "2026-02-07"
+        },
+        {
+          "date": "2026-02-08"
+        }
+      ]
+    },
+    {
+      "film_id": 25,
+      "imdb_id": 111282,
+      "imdb_title_id": "tt0111282",
+      "film_name": "Stargate",
+      "other_titles": null,
+      "version_type": "Standard",
+      "age_rating": [
+        {
+          "rating": "PG ",
+          "age_rating_image": "https://assets.movieglu.com/age_rating_logos/xx/pg.png",
+          "age_advisory": "Contains mild language and fantasy violence"
+        }
+      ],
+      "images": {
+        "poster": {
+          "1": {
+            "image_orientation": "portrait",
+            "region": "global",
+            "medium": {
+              "film_image": "https://image.movieglu.com/25/000025h1.jpg",
+              "width": 200,
+              "height": 300
+            }
+          }
+        }
+      },
+      "showings": {
+        "Standard": {
+          "film_id": 25,
+          "film_name": "Stargate",
+          "times": [
+            {
+              "start_time": "21:00",
+              "end_time": "23:18"
+            }
+          ]
+        }
+      },
+      "show_dates": [
+        {
+          "date": "2026-02-02"
+        },
+        {
+          "date": "2026-02-03"
+        },
+        {
+          "date": "2026-02-04"
+        },
+        {
+          "date": "2026-02-05"
+        },
+        {
+          "date": "2026-02-06"
+        },
+        {
+          "date": "2026-02-07"
+        },
+        {
+          "date": "2026-02-08"
+        }
+      ]
+    }
+  ],
+  "status": {
+    "count": 6,
+    "state": "OK",
+    "method": "cinemaShowTimes",
+    "message": null,
+    "request_method": "GET",
+    "version": "MOVI_286_XXv200",
+    "territory": "XX",
+    "device_datetime_sent": "2026-02-02T17:10:40.333Z",
+    "device_datetime_used": "2026-02-02 17:10:40"
+  }
+}

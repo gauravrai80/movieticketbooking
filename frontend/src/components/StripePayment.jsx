@@ -1,0 +1,40 @@
+import React from 'react';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import PaymentForm from './PaymentForm';
+
+// Initialize Stripe
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+
+const StripePayment = ({ clientSecret, bookingId, amount, movieTitle, onSuccess }) => {
+    if (!clientSecret) return null;
+
+    const options = {
+        clientSecret,
+        appearance: {
+            theme: 'night',
+            variables: {
+                colorPrimary: '#ec4899', // accent-500
+                colorBackground: '#1e293b', // primary-800
+                colorText: '#ffffff',
+                colorDanger: '#ef4444',
+                fontFamily: 'Outfit, system-ui, sans-serif',
+            },
+        },
+    };
+
+    return (
+        <div className="w-full">
+            <Elements stripe={stripePromise} options={options}>
+                <PaymentForm
+                    bookingId={bookingId}
+                    amount={amount}
+                    movieTitle={movieTitle}
+                    onSuccess={onSuccess}
+                />
+            </Elements>
+        </div>
+    );
+};
+
+export default StripePayment;
