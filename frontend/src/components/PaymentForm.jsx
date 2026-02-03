@@ -35,10 +35,12 @@ const PaymentForm = ({ bookingId, amount, movieTitle, onSuccess }) => {
             // Payment successful
             try {
                 await onSuccess(paymentIntent);
-                // Navigate will unmount, so no need to set processing false if successful
             } catch (err) {
                 console.error("Payment succeeded but onSuccess failed:", err);
-                setMessage("Payment succeeded, but we verified an error finalizing your booking. Please contact support.");
+                setMessage("Payment succeeded, but finalization failed. Please contact support.");
+            } finally {
+                // Always stop loading. If navigation happens, this component unmounts anyway.
+                // If navigation doesn't happen (error), we need to stop the spinner.
                 setIsProcessing(false);
             }
         } else {
