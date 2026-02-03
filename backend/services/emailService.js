@@ -1,36 +1,27 @@
-import nodemailer from 'nodemailer';
+import Brevo from '@getbrevo/brevo';
 import dotenv from 'dotenv';
 import path from 'path';
 import { logEmailError, logEmailSuccess } from '../utils/emailLogger.js';
 
 dotenv.config({ path: path.join(process.cwd(), '.env') });
 
-// Create reusable transporter object using the default SMTP transport
-const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true, // true for 465, false for other ports
-    auth: {
-        user: process.env.GMAIL_EMAIL,
-        pass: process.env.GMAIL_APP_PASSWORD,
-    },
-    dns: {
-        ipVersion: 4 // Force IPv4 to avoid timeouts on some environments
-    }
-});
+// Initialize Brevo API Client
+const apiInstance = new Brevo.TransactionalEmailsApi();
+const apiKey = apiInstance.authentications['apiKey'];
+apiKey.apiKey = process.env.BREVO_API_KEY;
 
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 1000;
 
-async function sendEmailWithRetry(mailOptions, retries = MAX_RETRIES) {
+async function sendEmailWithRetry(sendSmtpEmail, retries = MAX_RETRIES) {
     try {
-        const info = await transporter.sendMail(mailOptions);
-        return info;
+        const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
+        return data;
     } catch (error) {
         if (retries > 0) {
             console.warn(`Email send failed, retrying... (${MAX_RETRIES - retries + 1}/${MAX_RETRIES})`);
             await new Promise(resolve => setTimeout(resolve, RETRY_DELAY));
-            return sendEmailWithRetry(mailOptions, retries - 1);
+            return sendEmailWithRetry(sendSmtpEmail, retries - 1);
         }
         throw error;
     }
@@ -130,68 +121,59 @@ const emailTemplates = {
     }
 };
 
+const sendBrevoEmail = async (toEmail, subject, htmlContent) => {
+    const sendSmtpEmail = new Brevo.SendSmtpEmail();
+    sendSmtpEmail.subject = subject;
+    sendSmtpEmail.htmlContent = htmlContent;
+    sendSmtpEmail.sender = { "name": process.env.SENDER_NAME || "Movie App", "email": process.env.GMAIL_EMAIL };
+    sendSmtpEmail.to = [{ "email": toEmail }];
+
+    return await sendEmailWithRetry(sendSmtpEmail);
+};
+
 export const sendBookingConfirmation = async (user, booking, movie, showtime, theater) => {
     try {
         const { subject, html } = emailTemplates.bookingConfirmation(booking, movie, showtime, theater);
-        await sendEmailWithRetry({
-            from: `"${process.env.SENDER_NAME}" <${process.env.GMAIL_EMAIL}>`,
-            to: user.email,
-            subject,
-            html
-        });
+        await sendBrevoEmail(user.email, subject, html);
         logEmailSuccess(booking._id, user.email, 'Confirmation');
     } catch (error) {
         logEmailError(booking._id, user.email, error);
-        throw error;
+        // Do not throw to prevent blocking the booking flow if email fails
+        console.error("Failed to send booking confirmation email:", error);
     }
 };
 
 export const sendCancellationConfirmation = async (user, booking, movie, refundAmount) => {
     try {
         const { subject, html } = emailTemplates.bookingCancellation(booking, movie, refundAmount);
-        await sendEmailWithRetry({
-            from: `"${process.env.SENDER_NAME}" <${process.env.GMAIL_EMAIL}>`,
-            to: user.email,
-            subject,
-            html
-        });
+        await sendBrevoEmail(user.email, subject, html);
         logEmailSuccess(booking._id, user.email, 'Cancellation');
     } catch (error) {
         logEmailError(booking._id, user.email, error);
-        throw error;
+        console.error("Failed to send cancellation email:", error);
     }
 };
 
 export const sendBookingReminder = async (user, booking, movie, showtime, theater) => {
     try {
         const { subject, html } = emailTemplates.bookingReminder(booking, movie, showtime, theater);
-        await sendEmailWithRetry({
-            from: `"${process.env.SENDER_NAME}" <${process.env.GMAIL_EMAIL}>`,
-            to: user.email,
-            subject,
-            html
-        });
+        await sendBrevoEmail(user.email, subject, html);
         logEmailSuccess(booking._id, user.email, 'Reminder');
     } catch (error) {
         logEmailError(booking._id, user.email, error);
-        throw error;
+        console.error("Failed to send reminder email:", error);
     }
 };
 
 export const sendShowtimeChangeNotification = async (user, booking, movie, oldShowtime, newShowtime, theater) => {
     try {
         const { subject, html } = emailTemplates.showtimeChange(booking, movie, oldShowtime, newShowtime, theater);
-        await sendEmailWithRetry({
-            from: `"${process.env.SENDER_NAME}" <${process.env.GMAIL_EMAIL}>`,
-            to: user.email,
-            subject,
-            html
-        });
+        await sendBrevoEmail(user.email, subject, html);
         logEmailSuccess(booking._id, user.email, 'ShowtimeChange');
     } catch (error) {
         logEmailError(booking._id, user.email, error);
-        throw error;
+        console.error("Failed to send showtime change email:", error);
     }
 };
 
-export default transporter;
+export default apiInstance;
