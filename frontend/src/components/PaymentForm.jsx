@@ -33,8 +33,14 @@ const PaymentForm = ({ bookingId, amount, movieTitle, onSuccess }) => {
             setIsProcessing(false);
         } else if (paymentIntent && paymentIntent.status === 'succeeded') {
             // Payment successful
-            onSuccess(paymentIntent);
-            // We don't set processing to false immediately to prevent flickering before parent handles navigation
+            try {
+                await onSuccess(paymentIntent);
+                // Navigate will unmount, so no need to set processing false if successful
+            } catch (err) {
+                console.error("Payment succeeded but onSuccess failed:", err);
+                setMessage("Payment succeeded, but we verified an error finalizing your booking. Please contact support.");
+                setIsProcessing(false);
+            }
         } else {
             setMessage("Unexpected payment status.");
             setIsProcessing(false);
