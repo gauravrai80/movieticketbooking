@@ -4,7 +4,15 @@ import { loadStripe } from '@stripe/stripe-js';
 import PaymentForm from './PaymentForm';
 
 // Initialize Stripe
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
+const stripeKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || import.meta.env.VITE_STRIPE_PUBLIC_KEY;
+
+if (!stripeKey) {
+    console.error("CRITICAL ERROR: Stripe Key is missing from Environment Variables!");
+} else {
+    console.log("Stripe Key Loaded:", stripeKey.substring(0, 10) + "...");
+}
+
+const stripePromise = loadStripe(stripeKey);
 
 const StripePayment = ({ clientSecret, bookingId, amount, movieTitle, onSuccess }) => {
     if (!clientSecret) return null;
