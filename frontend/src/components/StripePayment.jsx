@@ -4,18 +4,28 @@ import { loadStripe } from '@stripe/stripe-js';
 import PaymentForm from './PaymentForm';
 
 // Initialize Stripe
+// Initialize Stripe
 const stripeKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || import.meta.env.VITE_STRIPE_PUBLIC_KEY;
+let stripePromise = null;
 
 if (!stripeKey) {
     console.error("CRITICAL ERROR: Stripe Key is missing from Environment Variables!");
 } else {
-    console.log("Stripe Key Loaded:", stripeKey.substring(0, 10) + "...");
+    console.log("Stripe Key Loaded successfully.");
+    stripePromise = loadStripe(stripeKey);
 }
-
-const stripePromise = loadStripe(stripeKey);
 
 const StripePayment = ({ clientSecret, bookingId, amount, movieTitle, onSuccess }) => {
     if (!clientSecret) return null;
+
+    if (!stripePromise) {
+        return (
+            <div className="bg-red-500/10 border border-red-500/50 text-red-500 p-4 rounded-lg">
+                <p className="font-bold">Configuration Error</p>
+                <p className="text-sm">Stripe Public Key is missing from environment variables. Please check Netlify settings.</p>
+            </div>
+        );
+    }
 
     const options = {
         clientSecret,
